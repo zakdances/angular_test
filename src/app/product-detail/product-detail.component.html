@@ -1,0 +1,52 @@
+
+<header>
+    <a [routerLink]="['/product-list']" mat-icon-button color="primary" aria-label="navigate back">
+        <mat-icon>arrow_back</mat-icon>
+    </a>
+<h1 class="mat-typography mat-display-1" style="margin-bottom: 0;">
+    {{title}}
+</h1>
+</header>
+
+
+<form *ngIf="modelLoaded" (ngSubmit)="saveProductDetails()" [formGroup]="product">
+<mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
+    <mat-error *ngIf="product.get('name')?.invalid ?? false">
+        <strong>Minimum: 1 character. Maximum: 55 characters.</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Type</mat-label>
+    <input matInput formControlName="type">
+    <mat-error *ngIf="product.get('type')?.invalid ?? false">
+        <strong>Minimum: 1 character. Maximum: 55 characters.</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <input matInput formControlName="description">
+    <mat-error *ngIf="product.get('description')?.invalid ?? false">
+        <strong>Minimum: 1 character. Maximum: 55 characters.</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Color</mat-label>
+    <input matInput formControlName="color">
+    <mat-error *ngIf="product.get('color')?.invalid ?? false">
+        <strong>Minimum: 1 character. Maximum: 55 characters.</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Price</mat-label>
+    <input type="number" matInput formControlName="price">
+    <mat-error *ngIf="product.get('price')?.invalid ?? false">
+        <strong>Must be 0 or greater</strong>
+    </mat-error>
+  </mat-form-field>
+
+
+  <button mat-raised-button type="submit" [disabled]="!product.valid">Save</button>
+
+</form>
